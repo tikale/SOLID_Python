@@ -17,7 +17,7 @@ class Rectangle:
 		print (f"Powierzchnia = {self.area()}")
 # =========================================================		
 
-# We can split it into two...
+# We can split it into three...
 class GeometricRectangle:
 	def __init__(self, width=0, height=0):
 		self.width = width
@@ -26,40 +26,51 @@ class GeometricRectangle:
 	def area(self):
 		return self.width * self.height
 		
-	def printRE(self):
-		print (f"Szerokosc = {self.width}")
-		print (f"Wysokosc = {self.height}")
-		print (f"Powierzchnia = {self.area()}")
-
 class DrawRectangle:
 	def draw(self):
 	# Do some drawing
 		print("\"Rysujemy prostokat\"")
-# ==========================================================	
-
-# apply the Facade pattern
-class printRE:
+		
+class PrintRectangleData:
 	def __init__(self, width=0, height=0, area=0):
+		self.width = width
+		self.height = height
+		self.area = area
 		print (f"Szerokosc = {self.width}")
 		print (f"Wysokosc = {self.height}")
-		print (f"Powierzchnia = {self.area()}")
+		print (f"Powierzchnia = {self.area}")
+# ==========================================================	
 
-class GeometricRectangleFa:
+# The downside of this solution is that the clients of the this code have to deal
+# with few classes.  A common solution to this dilemma is to apply the Facade
+# pattern.
+class RectangleFacade:
 	def __init__(self, width=0, height=0):
 		self.width = width
 		self.height = height
 		self.DR = DrawRectangle()
-		printRE(width, height, area())
+		self.GR = GeometricRectangle(width, height)
 
 	def area(self):
-		return self.width * self.height
+		return self.GR.area() #self.width * self.height
 
 	def DrawRe(self):
 		return self.DR.draw()
+		
+	def PrintREdata(self):
+		PrintRectangleData(self.width, self.height, self.area()) 
 
+# =============================================================
+
+# Run script
 print("No to zaczynamy:")
 print("")
 print("klasa Rectangle:")
 r1 = Rectangle(2, 3)
 r1.printRE()
 r1.draw()
+print("")
+print("klasa RectangleFacade:")
+r2 = RectangleFacade(5,9)
+r2.DrawRe()
+r2.PrintREdata()
