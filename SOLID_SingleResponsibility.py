@@ -1,3 +1,7 @@
+# 1. Single Responsibility Principle - jedna odpowiedzialność
+#        Każda funkcja, klasa lub modół powinien mieć tylko jeden powód do zmiany.
+#        Taki kod łatwiej zrozumieć, naprawić i utrzymać. Łatwiej się go testuje.
+
 # klasa prostokąt ma 3 odpowiedzialności
 class Rectangle:
 	def __init__(self, width=0, height=0):
