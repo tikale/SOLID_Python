@@ -32,6 +32,7 @@ draw_shape(shapes)
 # Klasa Shape będzie miała metodę wirtualną shapeOC
 # A każdy kształt będzie miał osobną klasę z własną wersją metody shapeOC
 
+# 
 # Do kwadratu i okręgu dodamy trójkąt.
 class Shape_OC:
 	def __init__(self, name: str):
@@ -60,9 +61,9 @@ def draw_shapeOC(shapes_names_OC: list):
 		print(f"To jest {shape_name.shapeOC()}.")
 
 shapes_names_OC = [
-Shape_OC('Kwadrat'),
-Shape_OC('Okrag'),
-Shape_OC('Trojkat')
+Kwadrat('Kwadrat'),
+Okrag('Okrag'),
+Trojkat('Trojkat')
 ]
 
 for name in shapes_names_OC:
